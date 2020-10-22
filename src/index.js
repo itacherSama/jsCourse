@@ -1,1 +1,5 @@
-console.log(1);
+import db from './db';
+
+db.pizzas.forEach((pizza) => {
+    console.log(pizza);
+})
