@@ -1,0 +1,32 @@
+@import "variables";
+
+.categories {
+    ul {
+        display: flex;
+
+        li {
+            background-color: $btn-gray;
+            transition: 1s;
+            color: black;
+            cursor: pointer;
+            
+            &.active {
+                color: white;
+                background-color: black;
+
+                &:hover {
+                    @extend .active;
+                }
+            }
+
+            &:hover {
+                background-color: darken($btn-gray, 10%);
+                color: lighten(black, 10%);
+            }
+
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+        }
+    }
+}

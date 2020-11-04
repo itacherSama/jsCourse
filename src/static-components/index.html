@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">
+        <div class="container">
+            <div class="header__logo">
+                <img src="./../img/pizza-logo.svg" class="header-logo" width="80">
+                <div>
+                    <h1>REACT PIZZA</h1>
+                    <p>самая вкусная пицца во вселенной</p>
+                </div>
+            </div>
+            <div class="header__cart">
+                <a href="/cart.html" class="button button--cart">
+                    <span>520 ₽</span>
+                    <div class="button--delimiter"></div>
+                    <img src="./../img/cart.svg">
+                    <span>3</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="content">
+        <div class="container">
+            <div class="content__top">
+                <div class="categories">
+                    <ul>
+                        <li class="button active">Все</li>
+                        <li class="button">Мясные</li>
+                        <li class="button">Вегетарианская</li>
+                        <li class="button">Гриль</li>
+                        <li class="button">Острые</li>
+                        <li class="button">Закрытые</li>
+                    </ul>
+                </div>
+                <div class="sorts">
+                    <div class="sorts__label">
+                        <img src="./../img/arrow-top.svg" alt="arrow">
+                        <span>сортировка по: <span class="sorts__label--active">популярное</span></span>
+                    </div>
+                    <div class="sorts__popup">
+                        <ul>
+                            <li class=" active">популярности</li>
+                            <li>по цене</li>
+                            <li>по алфавиту</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="content__main">
+                <h2 class="content__main_title">
+                    Все пиццы
+                </h2>
+                <div class="content__box">
+                    <% include components/pizza-block.ejs %>
+                    <% include components/pizza-block.ejs %>
+                    <% include components/pizza-block.ejs %>
+                    <% include components/pizza-block.ejs %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

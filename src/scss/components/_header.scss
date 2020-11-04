@@ -1,0 +1,29 @@
+
+.header {
+    padding-bottom: 40px;
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header__logo {
+        display: flex;
+        justify-content: start;
+        align-items: center
+        ;
+        img {
+            height: 38px;
+            width: 38px;
+            margin: 0 17px;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 24px;
+        }
+
+        p {
+            color: $gray-text;
+        }
+    }
+}

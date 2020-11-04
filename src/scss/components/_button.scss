@@ -1,0 +1,158 @@
+@import "variables";
+
+.button {
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 30px;
+    color: #fff;
+    transition: all 0.1s ease-out;
+    cursor: pointer;
+
+    &--cart {
+        padding: 15px 23px;
+        background-color: $orange;
+        &:hover {
+            color: red;
+            background-color: darken($orange, 15%);
+        }
+    }
+
+    &--delimiter {
+        margin: 0 14px;
+        width: 1px;
+        height: 25px;
+        background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    img {
+        margin-right: 6px;
+    }
+
+    span {
+        color: #fff;
+    }
+
+    svg {
+        margin-right: 7px;
+    }
+
+    &--outline {
+        border: 1px solid $orange;
+
+        span {
+            color: $orange;
+        }
+
+        i {
+            background-color: $orange;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-style: normal;
+            color: $outline-hover;
+        }
+
+        &:hover {
+            background-color: $orange;
+            color: $outline-hover;
+
+            span {
+                color: $outline-hover;
+            }
+
+            svg {
+                path {
+                    fill: $outline-hover;
+                }
+            }
+
+            i {
+                background-color: $outline-hover;
+                color: $orange;
+            }
+        }
+    }
+
+    &--add {
+        padding: 12px;
+        display: flex;
+        justify-content: space-evenly;
+
+        *:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+
+    &--black {
+        padding: 10px 40px;
+        background: #000;
+        color: #fff;
+
+        &:hover {
+            background-color: lighten(#000, 25%);
+        }
+    }
+
+    &--gray {
+        border-color: $gray-text;
+        padding: 15px 30px;
+
+        &:hover {
+            border-color: $orange;
+                
+            svg {
+                path {
+                    fill: $orange;
+                    stroke: #fff;
+                }
+            }
+
+            span {
+                color: #fff;
+                
+            }
+        } 
+
+        svg {
+            path {
+                stroke: $gray-text;
+                fill-rule: evenodd;
+            }
+        }
+
+        span {
+        color: $gray-text;
+
+        }
+    }
+
+    &--circle {
+        padding: 0;
+        width: 32px;
+        height: 32px;
+
+        svg {
+            margin: 0;
+        }
+    }
+
+    &--delete-block {
+        transform: rotate(45deg);
+        border-color: $gray-text;
+
+        svg {
+            path {
+                fill: $gray-text;
+            }
+        }
+
+        &:hover {
+            border-color: $orange;
+        }
+    }
+}

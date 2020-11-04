@@ -1,0 +1,75 @@
+.pizza-block {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    text-align: center;
+    margin-bottom: 60px;
+
+    &:not(:nth-of-type(4n)) {
+        margin-right: 35px;
+    }
+
+    &_img {
+        width: 260px;
+    }
+
+    &_name {
+        font-size: 20px;
+        font-weight: 800;
+        padding-bottom: 22px;
+    }
+
+    &__section {
+        background-color: $bgc-tile;
+        border-radius: 10px;
+        padding: 5px;
+
+        &_item {
+            padding: 6px 0px;
+            flex-grow: 1;
+            font-size: 14px;
+            cursor: pointer;
+
+            &.active {
+                background-color: #fff;
+                border-radius: 5px;
+            }
+    
+            &.disabled {
+                color: $btn-tile-text;
+                pointer-events: none;
+            }
+        }
+        margin-bottom: 20px;
+    }
+
+    .types, .sizes {
+        display: flex;
+    }
+
+    .types {
+        padding-bottom: 10px;
+    }
+
+    &__bot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &_price {
+            font-size: 22px;
+            font-weight: bold;
+
+        }
+
+        &_count {
+            display: flex;
+            justify-content: space-around;
+            align-items: baseline;
+        }
+    }
+    
+
+
+
+}
