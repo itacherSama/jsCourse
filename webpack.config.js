@@ -1,50 +1,110 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const webpack = require('webpack');
+require('dotenv').config()
+const ENV = process.env.APP_ENV;
 
-module.exports = {
+const isProd = ENV === 'prod';
+
+function setDevTool() {  // function to set dev-tool depending on environment
+    if (isProd) {
+        return 'inline-source-map';
+    } else {
+        return 'source-map';
+    }
+}
+
+const config = {
     mode: 'development',
-    entry: path.resolve(__dirname, "src", "index.js"),
+    entry: path.resolve(__dirname, "src", "app", "index.js"),
     output: {
-        filename: "bundle.js"
+        filename: "bundle.js",
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
     },
     module: {
         rules: [
             {
-                test: /\.scss$/,
+                test: /\.html$/,
                 use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ]
-            }/* , {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
+                    {
+                        loader: 'html-loader?name=./static-component/[name].[ext]',
+                        options: {
+                            minimize: true
+                        }
                     }
-                }
-            } */, {
+                ]
+            },
+            {
+                test: /\.scss$/,
+                use: [{
+                    loader: "style-loader"
+                }, {
+                    loader: "css-loader"
+                }, {
+                    loader: "sass-loader",
+                    options: {
+                        sassOptions: {
+                            data: '@import "variables";',
+                            includePaths: [path.resolve(__dirname, "./src/scss")] },
+                    },
+                }]
+            },/*{
+                test: /\.js$/,
+                use: 'babel-loader',
+                exclude: [
+                    /node_modules/
+                ]
+            },*/
+            {
+                test: /\.(eot|ttf|woff|woff2)$/,
+                use: [
+                    {
+                        loader: 'file-loader?name=./fonts/[name].[ext]'
+                    }
+                ]
+            },{
                 test: /\.(png|svg|jpg|gif)$/,
                 use: [
-                    'file-loader'
+                    {
+                        loader: 'file-loader?name=./img/[name].[ext]'
+                    }
                 ]
-            }
+            },
+
         ],
     },
+    plugins: [
+        new CleanWebpackPlugin({
+            cleanStaleWebpackAssets: false
+        }),
+        new HtmlWebpackPlugin({
+            filename: "index.html",
+            template: path.resolve(__dirname) + "/src/public/index.html"
+        })
+    ],
     devServer: {
         host: 'localhost',
         port: 8080,
         contentBase: path.join(__dirname, "dist"),
-        hot: true,
-        open: true,
-        openPage: ''
+        // open: true
+        publicPath: '/',
+
     },
-    devtool: 'inline-source-map',
-    plugins: [
-        new HtmlWebpackPlugin(),
-        new CleanWebpackPlugin(),
-    ]
+    devtool: setDevTool(),
+
 }
+
+if (isProd) {
+    config.plugins.push(
+        new UglifyJSPlugin(),
+        new CopyWebpackPlugin([{
+            from: __dirname + '/src/public'
+        }])
+    );
+};
+
+module.exports = config;

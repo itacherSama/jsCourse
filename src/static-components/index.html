@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-</head>
-<body>
 <div class="wrapper">
     <div class="header">
         <div class="container">
@@ -18,11 +9,11 @@
                 </div>
             </div>
             <div class="header__cart">
-                <a href="/cart.html" class="button button--cart">
-                    <span>520 ₽</span>
+                <a href="/cart.html" class="button button--cart button--cart-js">
+                    <span><span class="button-cart-price-js">0</span> ₽</span>
                     <div class="button--delimiter"></div>
                     <img src="./../img/cart.svg">
-                    <span>3</span>
+                    <span class="button-cart-count-js">0</span>
                 </a>
             </div>
         </div>
@@ -59,18 +50,10 @@
                 <h2 class="content__main_title">
                     Все пиццы
                 </h2>
-                <div class="content__box">
-                    <% include components/pizza-block.ejs %>
-                    <% include components/pizza-block.ejs %>
-                    <% include components/pizza-block.ejs %>
-                    <% include components/pizza-block.ejs %>
+                <div class="content__box content__box-js">
 
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-</body>
-</html>
-
